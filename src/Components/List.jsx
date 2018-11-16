@@ -5,6 +5,9 @@ class List extends Component {
   componentDidMount() {
       this.props.fetchData()
   }
+//   componentWillReceiveProps(){
+//     this.props.fetchData()
+//   }
   render() {
     return (
       <div>

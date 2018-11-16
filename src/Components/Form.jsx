@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import {connect} from "react-redux"
+import {createTodo} from "../Actions/todoAction"
 class Form extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +13,13 @@ class Form extends Component {
       [e.target.name]: e.target.value
     });
   };
+
+  handleSubmit = e =>{
+this.props.createTodo ({
+  description : this.state.description,
+  done: false
+})
+  }
   render() {
     return (
       <div>
@@ -21,10 +29,11 @@ class Form extends Component {
           value={this.state.description}
           onChange={this.handleOnChange}
         />
-        <button>Submit</button>
+        <button onClick={this.handleSubmit}>Submit</button>
       </div>
     );
   }
 }
-
-export default Form;
+export default connect(null,{createTodo})(Form)  
+// })
+// export default Form;
